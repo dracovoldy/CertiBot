@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestExcelRead" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1147,798" sap2010:WorkflowViewState.IdRef="TestExcelRead_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TestExcelRead" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1329,871" sap2010:WorkflowViewState.IdRef="TestExcelRead_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -72,7 +72,11 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtExcelData" />
       <Variable x:TypeArguments="x:String" Name="sExcelData" />
-      <Variable x:TypeArguments="x:String" Default="C:\Users\abmallik\Downloads\RPA.xlsx" Name="EXCEL_PATH" />
+      <Variable x:TypeArguments="x:String" Name="EXCEL_PATH">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">C:\Users\shamhatr\Downloads\RPA.xlsx</Literal>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:Int32" Name="idx" />
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="oWorkbook" />
       <Variable x:TypeArguments="x:Boolean" Name="bCertExist" />
@@ -130,7 +134,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:OpenBrowser>
-    <ui:ForEachRow CurrentIndex="[idx]" DataTable="[dtExcelData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="354,591" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow CurrentIndex="[idx]" DataTable="[dtExcelData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -266,10 +270,7 @@
                       </ui:BrowserScope.Body>
                     </ui:BrowserScope>
                     <FlowStep.Next>
-                      <FlowDecision x:Name="__ReferenceID3" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
-                        <FlowDecision.Condition>
-                          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="bCertExist" />
-                        </FlowDecision.Condition>
+                      <FlowDecision x:Name="__ReferenceID3" Condition="[bCertExist]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
